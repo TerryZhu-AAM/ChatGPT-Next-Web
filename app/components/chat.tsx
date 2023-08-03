@@ -989,42 +989,6 @@ export function Chat() {
             {Locale.Chat.SubTitle(session.messages.length)}
           </div>
         </div>
-//         <div className="window-actions">
-//           {!isMobileScreen && (
-<div></div>
-//             <div className="window-action-button">
-//               <IconButton
-//                 icon={<RenameIcon />}
-//                 bordered
-//                 onClick={() => setIsEditingMessage(true)}
-//               />
-//             </div>
-//           )}
-//           <div className="window-action-button">
-//             <IconButton
-//               icon={<ExportIcon />}
-//               bordered
-//               title={Locale.Chat.Actions.Export}
-//               onClick={() => {
-//                 setShowExport(true);
-//               }}
-//             />
-//           </div>
-//           {showMaxIcon && (
-//             <div className="window-action-button">
-//               <IconButton
-//                 icon={config.tightBorder ? <MinIcon /> : <MaxIcon />}
-//                 bordered
-//                 onClick={() => {
-//                   config.update(
-//                     (config) => (config.tightBorder = !config.tightBorder),
-//                   );
-//                 }}
-//               />
-//             </div>
-//           )}
-//         </div>
-
         <PromptToast
           showToast={!hitBottom}
           showModal={showPromptModal}
