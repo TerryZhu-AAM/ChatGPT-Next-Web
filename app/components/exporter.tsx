@@ -471,14 +471,14 @@ export function ImagePreviewer(props: {
 
           <div>
             <div className={styles["main-title"]}>知汇科技-AI平台</div>
-            <div className={styles["sub-title"]}>
-              github.com/Yidadaa/ChatGPT-Next-Web
-            </div>
-            <div className={styles["icons"]}>
-              <ExportAvatar avatar={config.avatar} />
-              <span className={styles["icon-space"]}>&</span>
-              <ExportAvatar avatar={mask.avatar} />
-            </div>
+{/*             <div className={styles["sub-title"]}> */}
+{/*               github.com/Yidadaa/ChatGPT-Next-Web */}
+{/*             </div> */}
+{/*             <div className={styles["icons"]}> */}
+{/*               <ExportAvatar avatar={config.avatar} /> */}
+{/*               <span className={styles["icon-space"]}>&</span> */}
+{/*               <ExportAvatar avatar={mask.avatar} /> */}
+{/*             </div> */}
           </div>
           <div>
             <div className={styles["chat-info-item"]}>

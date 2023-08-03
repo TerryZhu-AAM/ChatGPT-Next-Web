@@ -428,98 +428,98 @@ export function ChatActions(props: {
   const [showModelSelector, setShowModelSelector] = useState(false);
 
   return (
-    <div className={styles["chat-input-actions"]}>
-      {couldStop && (
-        <ChatAction
-          onClick={stopAll}
-          text={Locale.Chat.InputActions.Stop}
-          icon={<StopIcon />}
-        />
-      )}
-      {!props.hitBottom && (
-        <ChatAction
-          onClick={props.scrollToBottom}
-          text={Locale.Chat.InputActions.ToBottom}
-          icon={<BottomIcon />}
-        />
-      )}
-      {props.hitBottom && (
-        <ChatAction
-          onClick={props.showPromptModal}
-          text={Locale.Chat.InputActions.Settings}
-          icon={<SettingsIcon />}
-        />
-      )}
-
-      <ChatAction
-        onClick={nextTheme}
-        text={Locale.Chat.InputActions.Theme[theme]}
-        icon={
-          <>
-            {theme === Theme.Auto ? (
-              <AutoIcon />
-            ) : theme === Theme.Light ? (
-              <LightIcon />
-            ) : theme === Theme.Dark ? (
-              <DarkIcon />
-            ) : null}
-          </>
-        }
-      />
-
-      <ChatAction
-        onClick={props.showPromptHints}
-        text={Locale.Chat.InputActions.Prompt}
-        icon={<PromptIcon />}
-      />
-
-      <ChatAction
-        onClick={() => {
-          navigate(Path.Masks);
-        }}
-        text={Locale.Chat.InputActions.Masks}
-        icon={<MaskIcon />}
-      />
-
-      <ChatAction
-        text={Locale.Chat.InputActions.Clear}
-        icon={<BreakIcon />}
-        onClick={() => {
-          chatStore.updateCurrentSession((session) => {
-            if (session.clearContextIndex === session.messages.length) {
-              session.clearContextIndex = undefined;
-            } else {
-              session.clearContextIndex = session.messages.length;
-              session.memoryPrompt = ""; // will clear memory
-            }
-          });
-        }}
-      />
-
-      <ChatAction
-        onClick={() => setShowModelSelector(true)}
-        text={currentModel}
-        icon={<RobotIcon />}
-      />
-
-      {showModelSelector && (
-        <Selector
-          items={models.map((m) => ({
-            title: m,
-            value: m,
-          }))}
-          onClose={() => setShowModelSelector(false)}
-          onSelection={(s) => {
-            if (s.length === 0) return;
-            chatStore.updateCurrentSession((session) => {
-              session.mask.modelConfig.model = s[0] as ModelType;
-              session.mask.syncGlobalConfig = false;
-            });
-            showToast(s[0]);
-          }}
-        />
-      )}
-    </div>
+//     <div className={styles["chat-input-actions"]}>
+//       {couldStop && (
+//         <ChatAction
+//           onClick={stopAll}
+//           text={Locale.Chat.InputActions.Stop}
+//           icon={<StopIcon />}
+//         />
+//       )}
+//       {!props.hitBottom && (
+//         <ChatAction
+//           onClick={props.scrollToBottom}
+//           text={Locale.Chat.InputActions.ToBottom}
+//           icon={<BottomIcon />}
+//         />
+//       )}
+//       {props.hitBottom && (
+//         <ChatAction
+//           onClick={props.showPromptModal}
+//           text={Locale.Chat.InputActions.Settings}
+//           icon={<SettingsIcon />}
+//         />
+//       )}
+//
+//       <ChatAction
+//         onClick={nextTheme}
+//         text={Locale.Chat.InputActions.Theme[theme]}
+//         icon={
+//           <>
+//             {theme === Theme.Auto ? (
+//               <AutoIcon />
+//             ) : theme === Theme.Light ? (
+//               <LightIcon />
+//             ) : theme === Theme.Dark ? (
+//               <DarkIcon />
+//             ) : null}
+//           </>
+//         }
+//       />
+//
+//       <ChatAction
+//         onClick={props.showPromptHints}
+//         text={Locale.Chat.InputActions.Prompt}
+//         icon={<PromptIcon />}
+//       />
+//
+//       <ChatAction
+//         onClick={() => {
+//           navigate(Path.Masks);
+//         }}
+//         text={Locale.Chat.InputActions.Masks}
+//         icon={<MaskIcon />}
+//       />
+//
+//       <ChatAction
+//         text={Locale.Chat.InputActions.Clear}
+//         icon={<BreakIcon />}
+//         onClick={() => {
+//           chatStore.updateCurrentSession((session) => {
+//             if (session.clearContextIndex === session.messages.length) {
+//               session.clearContextIndex = undefined;
+//             } else {
+//               session.clearContextIndex = session.messages.length;
+//               session.memoryPrompt = ""; // will clear memory
+//             }
+//           });
+//         }}
+//       />
+//
+//       <ChatAction
+//         onClick={() => setShowModelSelector(true)}
+//         text={currentModel}
+//         icon={<RobotIcon />}
+//       />
+//
+//       {showModelSelector && (
+//         <Selector
+//           items={models.map((m) => ({
+//             title: m,
+//             value: m,
+//           }))}
+//           onClose={() => setShowModelSelector(false)}
+//           onSelection={(s) => {
+//             if (s.length === 0) return;
+//             chatStore.updateCurrentSession((session) => {
+//               session.mask.modelConfig.model = s[0] as ModelType;
+//               session.mask.syncGlobalConfig = false;
+//             });
+//             showToast(s[0]);
+//           }}
+//         />
+//       )}
+//     </div>
   );
 }
 
@@ -988,40 +988,40 @@ export function Chat() {
             {Locale.Chat.SubTitle(session.messages.length)}
           </div>
         </div>
-        <div className="window-actions">
-          {!isMobileScreen && (
-            <div className="window-action-button">
-              <IconButton
-                icon={<RenameIcon />}
-                bordered
-                onClick={() => setIsEditingMessage(true)}
-              />
-            </div>
-          )}
-          <div className="window-action-button">
-            <IconButton
-              icon={<ExportIcon />}
-              bordered
-              title={Locale.Chat.Actions.Export}
-              onClick={() => {
-                setShowExport(true);
-              }}
-            />
-          </div>
-          {showMaxIcon && (
-            <div className="window-action-button">
-              <IconButton
-                icon={config.tightBorder ? <MinIcon /> : <MaxIcon />}
-                bordered
-                onClick={() => {
-                  config.update(
-                    (config) => (config.tightBorder = !config.tightBorder),
-                  );
-                }}
-              />
-            </div>
-          )}
-        </div>
+//         <div className="window-actions">
+//           {!isMobileScreen && (
+//             <div className="window-action-button">
+//               <IconButton
+//                 icon={<RenameIcon />}
+//                 bordered
+//                 onClick={() => setIsEditingMessage(true)}
+//               />
+//             </div>
+//           )}
+//           <div className="window-action-button">
+//             <IconButton
+//               icon={<ExportIcon />}
+//               bordered
+//               title={Locale.Chat.Actions.Export}
+//               onClick={() => {
+//                 setShowExport(true);
+//               }}
+//             />
+//           </div>
+//           {showMaxIcon && (
+//             <div className="window-action-button">
+//               <IconButton
+//                 icon={config.tightBorder ? <MinIcon /> : <MaxIcon />}
+//                 bordered
+//                 onClick={() => {
+//                   config.update(
+//                     (config) => (config.tightBorder = !config.tightBorder),
+//                   );
+//                 }}
+//               />
+//             </div>
+//           )}
+//         </div>
 
         <PromptToast
           showToast={!hitBottom}
