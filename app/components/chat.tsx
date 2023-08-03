@@ -991,6 +991,7 @@ export function Chat() {
         </div>
 //         <div className="window-actions">
 //           {!isMobileScreen && (
+<div></div>
 //             <div className="window-action-button">
 //               <IconButton
 //                 icon={<RenameIcon />}
