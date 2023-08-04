@@ -399,17 +399,6 @@ export function Settings() {
             {Locale.Settings.SubTitle}
           </div>
         </div>
-        <div className="window-actions">
-          <div className="window-action-button"></div>
-          <div className="window-action-button"></div>
-          <div className="window-action-button">
-            <IconButton
-              icon={<CloseIcon />}
-              onClick={() => navigate(Path.Home)}
-              bordered
-            />
-          </div>
-        </div>
       </div>
       <div className={styles["settings"]}>
         <List>
